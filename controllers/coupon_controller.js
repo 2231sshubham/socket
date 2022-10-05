@@ -39,3 +39,26 @@ module.exports = async function updateCoupon(params){
         throw err.toString()
     }
 }
+
+module.exports = async function getAll(params){
+    try {
+        let {application_type} = params
+        let data = await Coupons.findAll({
+            where: application_type
+        })
+        return data
+    } catch (err) {
+        throw err.toString()
+    }
+}
+
+module.exports = async function getOne(params){
+    try {
+        let {coupon_id} = params
+        const data = await Coupons.find({
+            where: coupon_id
+        })
+    } catch (err) {
+        throw err.toString()
+    }
+}
